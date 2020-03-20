@@ -12,10 +12,13 @@ export default {
   effects: {
     *fetch({ payload }, { call, put }) {
       const response = yield call(queryRule, payload);
-      yield put({
-        type: 'save',
-        payload: response,
-      });
+      if(response.code === 200)
+      {
+        yield put({
+          type: 'save',
+          payload: response,
+        });
+      }
     },
     *add({ payload, callback }, { call, put }) {
       const response = yield call(addRule, payload);

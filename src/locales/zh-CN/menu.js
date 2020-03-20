@@ -43,5 +43,7 @@ export default {
   'menu.editor.mind': '脑图编辑器',
   'menu.editor.koni': '拓扑编辑器',
   'menu.orders':'订单管理',
-  'menu.orders.all-list':'订单列表'
+  'menu.orders.all-list':'订单列表',
+  'menu.demo':'测试用例',
+  'menu.demo.all-list':'测试ITEM'
 };
