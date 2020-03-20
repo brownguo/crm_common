@@ -277,28 +277,10 @@ export default [
             name: 'all-list',
             component: './Orders/TableList',
           },
-        ],
-      },
-      //  editor
-      {
-        name: 'editor',
-        icon: 'highlight',
-        path: '/editor',
-        routes: [
           {
-            path: '/editor/flow',
-            name: 'flow',
-            component: './Editor/GGEditor/Flow',
-          },
-          {
-            path: '/editor/mind',
-            name: 'mind',
-            component: './Editor/GGEditor/Mind',
-          },
-          {
-            path: '/editor/koni',
-            name: 'koni',
-            component: './Editor/GGEditor/Koni',
+            path: '/orders/detail/:id',
+            hideInMenu: true,
+            component: './Orders/BasicProfile',
           },
         ],
       },
