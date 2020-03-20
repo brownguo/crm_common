@@ -25,7 +25,7 @@ import {
 import StandardTable from '@/components/StandardTable';
 import PageHeaderWrapper from '@/components/PageHeaderWrapper';
 
-import styles from './TableList.less';
+import styles from './OrderList.less';
 
 const FormItem = Form.Item;
 const { Step } = Steps;
@@ -36,8 +36,9 @@ const getValue = obj =>
   Object.keys(obj)
     .map(key => obj[key])
     .join(',');
+
 const statusMap = ['default', 'processing', 'success', 'error'];
-const status = ['订单作废', '审核通过', '审核失败', '未审核'];
+const status = ['已下单', '审核通过', '审核失败', '订单作废'];
 
 const CreateForm = Form.create()(props => {
   const { modalVisible, form, handleAdd, handleModalVisible } = props;
@@ -51,7 +52,7 @@ const CreateForm = Form.create()(props => {
   return (
     <Modal
       destroyOnClose
-      title="新建规则"
+      title="下单"
       visible={modalVisible}
       onOk={okHandle}
       onCancel={() => handleModalVisible()}
@@ -279,7 +280,7 @@ class UpdateForm extends PureComponent {
   loading: loading.models.rule,
 }))
 @Form.create()
-class TableList extends PureComponent {
+class OrderList extends PureComponent {
   state = {
     modalVisible: false,
     updateModalVisible: false,
@@ -292,15 +293,19 @@ class TableList extends PureComponent {
   columns = [
     {
       title: '订单ID',
-      dataIndex: 'name',
+      dataIndex: 'order_id',
       render: text => <Link to={`/orders/detail/${text.replace(/\s+/gi, '-')}`}>{text}</Link>,
     },
     {
       title: '姓名',
-      dataIndex: 'desc',
+      dataIndex: 'username',
     },
     {
       title: '手机号',
+      dataIndex: 'mobile_number',
+    },
+    {
+      title: '金额',
       dataIndex: 'callNo',
       sorter: true,
       render: val => `${val} 万`,
@@ -334,7 +339,7 @@ class TableList extends PureComponent {
     },
     {
       title: '订单创建时间',
-      dataIndex: 'updatedAt',
+      dataIndex: 'createdAt',
       sorter: true,
       render: val => <span>{moment(val).format('YYYY-MM-DD HH:mm:ss')}</span>,
     },
@@ -348,9 +353,8 @@ class TableList extends PureComponent {
       title: '操作',
       render: (text, record) => (
         <Fragment>
-          <a onClick={() => this.handleUpdateModalVisible(true, record)}>配置</a>
+          <a onClick={() => this.handleUpdateModalVisible(true, record)}>审核</a>
           <Divider type="vertical" />
-          <a href="">订阅警报</a>
         </Fragment>
       ),
     },
@@ -654,7 +658,7 @@ class TableList extends PureComponent {
             <div className={styles.tableListForm}>{this.renderForm()}</div>
             <div className={styles.tableListOperator}>
               <Button icon="plus" type="primary" onClick={() => this.handleModalVisible(true)}>
-                新建
+                下单
               </Button>
               {selectedRows.length > 0 && (
                 <span>
@@ -690,4 +694,4 @@ class TableList extends PureComponent {
   }
 }
 
-export default TableList;
+export default OrderList;

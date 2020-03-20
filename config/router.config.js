@@ -275,7 +275,7 @@ export default [
             icon: 'rocket',
             path: '/orders/all-list',
             name: 'all-list',
-            component: './Orders/TableList',
+            component: './Orders/OrderList',
           },
           {
             path: '/orders/detail/:id',
