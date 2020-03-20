@@ -80,7 +80,7 @@ export default {
   },
   proxy: {
     '/server/api/': {
-      target: 'https://preview.pro.ant.design/',
+      target: 'http://test.api.com',
       changeOrigin: true,
       pathRewrite: { '^/server': '' },
     },

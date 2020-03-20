@@ -45,6 +45,7 @@ const progressColumns = [
   profile,
   loading: loading.effects['profile/fetchBasic'],
 }))
+
 class BasicProfile extends Component {
   componentDidMount() {
     const { dispatch, match } = this.props;

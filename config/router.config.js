@@ -285,6 +285,19 @@ export default [
         ],
       },
       {
+        path: '/demo',
+        icon: 'bars',
+        name: 'demo',
+        routes: [
+          {
+            icon: 'rocket',
+            path: '/demo/all-list',
+            name: 'all-list',
+            component: './Demo/List',
+          },
+        ],
+      },
+      {
         component: '404',
       },
     ],
