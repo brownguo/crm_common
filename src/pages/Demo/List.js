@@ -79,9 +79,9 @@ class UpdateForm extends PureComponent {
 
     this.state = {
       formVals: {
-        name: props.values.name,
-        desc: props.values.desc,
-        key: props.values.key,
+        name: props.values.username,
+        desc: props.values.mobile_number,
+        key: props.values.id,
         target: '0',
         template: '0',
         type: '1',
@@ -280,7 +280,7 @@ class UpdateForm extends PureComponent {
   loading: loading.models.demo,
 }))
 @Form.create()
-class OrderList extends PureComponent {
+class List extends PureComponent {
   state = {
     modalVisible: false,
     updateModalVisible: false,
@@ -632,10 +632,10 @@ class OrderList extends PureComponent {
 
   render() {
     const {
-      demo: { order_list, pagination },
+      demo: { data },
       loading,
     } = this.props;
-    console.log(this.state);
+    console.log(data);
     const { selectedRows, modalVisible, updateModalVisible, stepFormValues } = this.state;
     const menu = (
       <Menu onClick={this.handleMenuClick} selectedKeys={[]}>
@@ -675,7 +675,7 @@ class OrderList extends PureComponent {
             <StandardTable
               selectedRows={selectedRows}
               loading={loading}
-              data={order_list}
+              data={data}
               columns={this.columns}
               onSelectRow={this.handleSelectRows}
               onChange={this.handleStandardTableChange}
@@ -695,4 +695,4 @@ class OrderList extends PureComponent {
   }
 }
 
-export default OrderList;
+export default List;

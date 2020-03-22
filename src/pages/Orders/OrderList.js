@@ -635,7 +635,7 @@ class OrderList extends PureComponent {
       rule: { data },
       loading,
     } = this.props;
-    console.log(data);
+    console.log(this.state);
     const { selectedRows, modalVisible, updateModalVisible, stepFormValues } = this.state;
     const menu = (
       <Menu onClick={this.handleMenuClick} selectedKeys={[]}>

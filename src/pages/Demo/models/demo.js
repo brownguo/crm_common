@@ -50,7 +50,7 @@ export default {
     save(state, action) {
       return {
         ...state,
-        ...action.payload,
+        data: action.payload,
       };
     },
   },
