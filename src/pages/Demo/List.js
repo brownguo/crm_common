@@ -277,7 +277,7 @@ class UpdateForm extends PureComponent {
 /* eslint react/no-multi-comp:0 */
 @connect(({ demo, loading }) => ({
   demo,
-  loading: loading.models.rule,
+  loading: loading.models.demo,
 }))
 @Form.create()
 class OrderList extends PureComponent {
@@ -460,7 +460,7 @@ class OrderList extends PureComponent {
       });
 
       dispatch({
-        type: 'rule/fetch',
+        type: 'demo/fetch',
         payload: values,
       });
     });
@@ -482,7 +482,7 @@ class OrderList extends PureComponent {
   handleAdd = fields => {
     const { dispatch } = this.props;
     dispatch({
-      type: 'rule/add',
+      type: 'demo/add',
       payload: {
         desc: fields.desc,
       },
@@ -496,7 +496,7 @@ class OrderList extends PureComponent {
     const { dispatch } = this.props;
     const { formValues } = this.state;
     dispatch({
-      type: 'rule/update',
+      type: 'demo/update',
       payload: {
         query: formValues,
         body: {
@@ -632,9 +632,10 @@ class OrderList extends PureComponent {
 
   render() {
     const {
-      demo: { data },
+      demo: { order_list, pagination },
       loading,
     } = this.props;
+    console.log(this.state);
     const { selectedRows, modalVisible, updateModalVisible, stepFormValues } = this.state;
     const menu = (
       <Menu onClick={this.handleMenuClick} selectedKeys={[]}>
@@ -674,7 +675,7 @@ class OrderList extends PureComponent {
             <StandardTable
               selectedRows={selectedRows}
               loading={loading}
-              data={data}
+              data={order_list}
               columns={this.columns}
               onSelectRow={this.handleSelectRows}
               onChange={this.handleStandardTableChange}

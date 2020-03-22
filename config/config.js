@@ -79,10 +79,10 @@ export default {
     'primary-color': primaryColor,
   },
   proxy: {
-    '/server/api/': {
-      target: 'http://test.api.com',
+    '/v1': {
+      target: 'http://test.muhouquan.com',
       changeOrigin: true,
-      pathRewrite: { '^/server': '' },
+      pathRewrite: { '^/v1': '' },
     },
   },
   ignoreMomentLocale: true,

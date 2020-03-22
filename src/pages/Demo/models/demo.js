@@ -2,9 +2,12 @@ import { queryRule, removeRule, addRule, updateRule } from '@/services/demo';
 
 export default {
   namespace: 'demo',
+
   state: {
     data: {
-      list: [],
+      code: '',
+      msg: '',
+      order_list: [],
       pagination: {},
     },
   },
@@ -12,13 +15,10 @@ export default {
   effects: {
     *fetch({ payload }, { call, put }) {
       const response = yield call(queryRule, payload);
-      if(response.code === 200)
-      {
-        yield put({
-          type: 'save',
-          payload: response,
-        });
-      }
+      yield put({
+        type: 'save',
+        payload: response,
+      });
     },
     *add({ payload, callback }, { call, put }) {
       const response = yield call(addRule, payload);
@@ -50,7 +50,7 @@ export default {
     save(state, action) {
       return {
         ...state,
-        data: action.payload,
+        ...action.payload,
       };
     },
   },
