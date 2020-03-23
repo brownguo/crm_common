@@ -1,10 +1,12 @@
-import { queryRule, removeRule, addRule, updateRule } from '@/services/api';
+import { queryRule, removeRule, addRule, updateRule } from '@/services/orders';
 
 export default {
-  namespace: 'rule',
+  namespace: 'orders',
 
   state: {
     data: {
+      code:'',
+      msg:'',
       list: [],
       pagination: {},
     },

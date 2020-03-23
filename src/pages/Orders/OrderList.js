@@ -275,9 +275,9 @@ class UpdateForm extends PureComponent {
 }
 
 /* eslint react/no-multi-comp:0 */
-@connect(({ rule, loading }) => ({
-  rule,
-  loading: loading.models.rule,
+@connect(({ orders, loading }) => ({
+  orders,
+  loading: loading.models.orders,
 }))
 @Form.create()
 class OrderList extends PureComponent {
@@ -298,7 +298,7 @@ class OrderList extends PureComponent {
     },
     {
       title: '姓名',
-      dataIndex: 'username',
+      dataIndex: 'account_name',
     },
     {
       title: '手机号',
@@ -314,7 +314,7 @@ class OrderList extends PureComponent {
     },
     {
       title: '状态',
-      dataIndex: 'status',
+      dataIndex: 'order_status',
       filters: [
         {
           text: status[0],
@@ -353,7 +353,13 @@ class OrderList extends PureComponent {
       title: '操作',
       render: (text, record) => (
         <Fragment>
-          <a onClick={() => this.handleUpdateModalVisible(true, record)}>审核</a>
+          <Button
+            size="small"
+            type="primary"
+            onClick={() => this.handleUpdateModalVisible(true, record)}
+          >
+            审核
+          </Button>
           <Divider type="vertical" />
         </Fragment>
       ),
@@ -363,7 +369,7 @@ class OrderList extends PureComponent {
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch({
-      type: 'rule/fetch',
+      type: 'orders/fetch',
     });
   }
 
@@ -388,7 +394,7 @@ class OrderList extends PureComponent {
     }
 
     dispatch({
-      type: 'rule/fetch',
+      type: 'orders/fetch',
       payload: params,
     });
   };
@@ -400,7 +406,7 @@ class OrderList extends PureComponent {
       formValues: {},
     });
     dispatch({
-      type: 'rule/fetch',
+      type: 'orders/fetch',
       payload: {},
     });
   };
@@ -420,7 +426,7 @@ class OrderList extends PureComponent {
     switch (e.key) {
       case 'remove':
         dispatch({
-          type: 'rule/remove',
+          type: 'orders/remove',
           payload: {
             key: selectedRows.map(row => row.key),
           },
@@ -460,7 +466,7 @@ class OrderList extends PureComponent {
       });
 
       dispatch({
-        type: 'rule/fetch',
+        type: 'orders/fetch',
         payload: values,
       });
     });
@@ -482,7 +488,7 @@ class OrderList extends PureComponent {
   handleAdd = fields => {
     const { dispatch } = this.props;
     dispatch({
-      type: 'rule/add',
+      type: 'orders/add',
       payload: {
         desc: fields.desc,
       },
@@ -496,7 +502,7 @@ class OrderList extends PureComponent {
     const { dispatch } = this.props;
     const { formValues } = this.state;
     dispatch({
-      type: 'rule/update',
+      type: 'orders/update',
       payload: {
         query: formValues,
         body: {
@@ -632,10 +638,9 @@ class OrderList extends PureComponent {
 
   render() {
     const {
-      rule: { data },
+      orders: { data },
       loading,
     } = this.props;
-    console.log(this.state);
     const { selectedRows, modalVisible, updateModalVisible, stepFormValues } = this.state;
     const menu = (
       <Menu onClick={this.handleMenuClick} selectedKeys={[]}>

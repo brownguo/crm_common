@@ -80,7 +80,7 @@ export default {
   },
   proxy: {
     '/v1': {
-      target: 'http://test.muhouquan.com',
+      target: 'http://test.jwt.com/v1',
       changeOrigin: true,
       pathRewrite: { '^/v1': '' },
     },
