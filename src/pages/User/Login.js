@@ -13,7 +13,7 @@ const { Tab, UserName, Password, Mobile, Captcha, Submit } = Login;
 }))
 class LoginPage extends Component {
   state = {
-    type: 'account',
+    type: 'account_login',
     autoLogin: true,
   };
 
@@ -79,9 +79,9 @@ class LoginPage extends Component {
             this.loginForm = form;
           }}
         >
-          <Tab key="account" tab={formatMessage({ id: 'app.login.tab-login-credentials' })}>
+          <Tab key="account_login" tab={formatMessage({ id: 'app.login.tab-login-credentials' })}>
             {login.status === 'error' &&
-              login.type === 'account' &&
+              login.type === 'account_login' &&
               !submitting &&
               this.renderMessage(formatMessage({ id: 'app.login.message-invalid-credentials' }))}
             <UserName
