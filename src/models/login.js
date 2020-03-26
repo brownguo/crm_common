@@ -22,10 +22,10 @@ export default {
         type: 'changeLoginStatus',
         payload: response,
       });
+      console.log(response);
 
-      // Login successfully
+      // Login successfully，登陆成功，需要刷新权限。
       if (response.status === 'success' && response.code === 200) {
-        console.log(response);
         reloadAuthorized();
         const urlParams = new URL(window.location.href);
         const params = getPageQuery();
