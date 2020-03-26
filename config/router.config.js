@@ -23,8 +23,9 @@ export default [
     component: '../layouts/BasicLayout',
     Routes: ['src/pages/Authorized'],
     routes: [
-      // dashboard
-      { path: '/', redirect: '/orders/all-list', authority: ['admin', 'user'] },
+      // dashboard //, authority: ['admin', 'user']
+      { path: '/', redirect: '/orders/all-list'},
+
       {
         path: '/orders',
         icon: 'bars',
@@ -43,6 +44,7 @@ export default [
           },
         ],
       },
+
       {
         component: '404',
       },

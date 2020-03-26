@@ -22,10 +22,9 @@ export default {
         type: 'changeLoginStatus',
         payload: response,
       });
-      console.log(response);
 
       // Login successfully，登陆成功，需要刷新权限。
-      if (response.status === 'success' && response.code === 200) {
+      if (response.msg === 'success' && response.code === 200) {
         reloadAuthorized();
         const urlParams = new URL(window.location.href);
         const params = getPageQuery();
@@ -78,7 +77,7 @@ export default {
 
   reducers: {
     changeLoginStatus(state, { payload }) {
-      setAuthority(payload.currentAuthority);
+      setAuthority(payload.data);
       return {
         ...state,
         status: payload.status,
