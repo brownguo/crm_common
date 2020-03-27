@@ -111,9 +111,8 @@ export default {
     *getMenuData({ payload }, { put }) {
       const { routes, authority, path } = payload;
       const originalMenuData = memoizeOneFormatter(routes, authority, path);
-      console.log(originalMenuData);
 
-      const menuData = filterMenuData(originalMenuData);cx
+      const menuData = filterMenuData(originalMenuData);
       const breadcrumbNameMap = memoizeOneGetBreadcrumbNameMap(originalMenuData);
       yield put({
         type: 'save',
