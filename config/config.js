@@ -80,7 +80,7 @@ export default {
   },
   proxy: {
     '/v1': {
-      target: 'http://test.jwt.com/v1',
+      target: 'https://www.fastmock.site/mock/7bd431ddc4d393dfc736a3f6b111bc54/crm',
       changeOrigin: true,
       pathRewrite: { '^/v1': '' },
     },
