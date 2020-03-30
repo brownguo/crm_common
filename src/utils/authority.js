@@ -4,6 +4,7 @@ export function getAuthority(str) {
   const authorityString =
     typeof str === 'undefined' ? localStorage.getItem('crm-admin-authority-key') : str;
   // authorityString could be admin, "admin", ["admin"]
+
   let authority;
   try {
     authority = JSON.parse(authorityString);
@@ -11,11 +12,13 @@ export function getAuthority(str) {
     authority = authorityString;
   }
 
-  if (typeof authority === 'string') {
+
+  if (typeof authority === 'string') {  // 不是string，是json
     return [authority];
   }
+  console.log(authority.authList);
 
-  return authority || ['admin'];
+  return authority
 }
 export function setAuthority(authority) {
   const proAuthority = typeof authority === 'string' ? [authority] : authority;

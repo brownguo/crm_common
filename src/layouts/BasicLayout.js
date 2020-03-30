@@ -49,7 +49,6 @@ class BasicLayout extends React.Component {
       dispatch,
       route: { routes, path, authority },
     } = this.props;
-    console.log(routes);
     dispatch({
       type: 'user/fetchCurrent',
     });
