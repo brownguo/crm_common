@@ -35,19 +35,25 @@ export default [
     Routes: ['src/pages/Authorized'],
     routes: [
       // dashboard //, authority: ['admin', 'user']
-      { path: '/', redirect: '/orders/all-list' },
+      {
+        path: '/',
+        redirect: '/orders/all-list',
+        authority: ['auth_orders']
+      },
 
       //订单列表
       {
         path: '/orders',
         icon: 'bars',
         name: 'orders',
+        authority: ['auth_orders'],
         routes: [
           {
             icon: 'rocket',
             path: '/orders/all-list',
             name: 'all-list',
             component: './Orders/OrderList',
+            authority: ['auth_orders'],
           },
           {
             path: '/orders/detail/:id',
@@ -57,30 +63,30 @@ export default [
         ],
       },
       //测试权限
-      {
-        path: '/profile',
-        name: 'profile',
-        icon: 'profile',
-        routes: [
-          // profile
-          {
-            path: '/profile/basic',
-            name: 'basic',
-            component: './Profile/BasicProfile',
-          },
-          {
-            path: '/profile/basic/:id',
-            hideInMenu: true,
-            component: './Profile/BasicProfile',
-          },
-          {
-            path: '/profile/advanced',
-            name: 'advanced',
-            authority: ['admin'],
-            component: './Profile/AdvancedProfile',
-          },
-        ],
-      },
+      // {
+      //   path: '/profile',
+      //   name: 'profile',
+      //   icon: 'profile',
+      //   routes: [
+      //     // profile
+      //     {
+      //       path: '/profile/basic',
+      //       name: 'basic',
+      //       component: './Profile/BasicProfile',
+      //     },
+      //     {
+      //       path: '/profile/basic/:id',
+      //       hideInMenu: true,
+      //       component: './Profile/BasicProfile',
+      //     },
+      //     {
+      //       path: '/profile/advanced',
+      //       name: 'advanced',
+      //       authority: ['admin'],
+      //       component: './Profile/AdvancedProfile',
+      //     },
+      //   ],
+      // },
 
       {
         component: '404',
