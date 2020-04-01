@@ -17,6 +17,9 @@ export function getAuthority(str) {
     return [authority];
   }
 
+
+  console.log(...[authority.authList]);
+
   return ['orders_all_list'];  // 在这里返回权限规则
   // return authority
 }
