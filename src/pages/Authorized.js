@@ -7,8 +7,7 @@ import { getAuthority } from '@/utils/authority';
 import Exception403 from '@/pages/Exception/403';
 
 function AuthComponent({ children, location, routerData }) {
-  // const auth = getAuthority();
-  const auth = ['auth_orders'];
+  const auth = getAuthority();
   const isLogin = auth && auth[0] !== 'guest';
   const getRouteAuthority = (path, routeData) => {
     let authorities;
@@ -25,8 +24,6 @@ function AuthComponent({ children, location, routerData }) {
     });
     return authorities;
   };
-  console.log(isLogin);
-  console.log(getRouteAuthority(location.pathname, routerData));
   return (
     <Authorized
       authority={getRouteAuthority(location.pathname, routerData)}

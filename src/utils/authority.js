@@ -16,9 +16,9 @@ export function getAuthority(str) {
   if (typeof authority === 'string') {  // 不是string，是json
     return [authority];
   }
-  console.log(authority.authList);
 
-  return authority
+  return ['orders_all_list'];  // 在这里返回权限规则
+  // return authority
 }
 export function setAuthority(authority) {
   const proAuthority = typeof authority === 'string' ? [authority] : authority;

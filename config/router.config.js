@@ -38,7 +38,7 @@ export default [
       {
         path: '/',
         redirect: '/orders/all-list',
-        authority: ['auth_orders']
+        authority: ['orders_all_list']
       },
 
       //订单列表
@@ -46,48 +46,44 @@ export default [
         path: '/orders',
         icon: 'bars',
         name: 'orders',
-        authority: ['auth_orders'],
+        authority: ['orders_all_list'],
         routes: [
           {
             icon: 'rocket',
             path: '/orders/all-list',
             name: 'all-list',
             component: './Orders/OrderList',
-            authority: ['auth_orders'],
+            authority: ['orders_all_list'],
           },
           {
             path: '/orders/detail/:id',
             hideInMenu: true,
             component: './Orders/BasicProfile',
+            authority: ['orders_detail_by_id'],
           },
         ],
       },
-      //测试权限
-      // {
-      //   path: '/profile',
-      //   name: 'profile',
-      //   icon: 'profile',
-      //   routes: [
-      //     // profile
-      //     {
-      //       path: '/profile/basic',
-      //       name: 'basic',
-      //       component: './Profile/BasicProfile',
-      //     },
-      //     {
-      //       path: '/profile/basic/:id',
-      //       hideInMenu: true,
-      //       component: './Profile/BasicProfile',
-      //     },
-      //     {
-      //       path: '/profile/advanced',
-      //       name: 'advanced',
-      //       authority: ['admin'],
-      //       component: './Profile/AdvancedProfile',
-      //     },
-      //   ],
-      // },
+      {
+        name: 'result',
+        icon: 'check-circle-o',
+        path: '/result',
+        routes: [
+          // result
+          {
+            path: '/result/success',
+            name: 'success',
+            component: './Result/Success',
+            authority: ['result_success'],
 
+          },
+          {
+            path: '/result/fail',
+            name: 'fail',
+            component: './Result/Error',
+            authority: ['result_error'],
+          },
+        ],
+      },
       {
         component: '404',
       },
