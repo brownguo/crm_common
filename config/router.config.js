@@ -63,10 +63,12 @@ export default [
           },
         ],
       },
+      //测试权限
       {
         name: 'result',
         icon: 'check-circle-o',
         path: '/result',
+        authority: ['result_success'],
         routes: [
           // result
           {
