@@ -2,9 +2,11 @@ import RenderAuthorize from '@/components/Authorized';
 import { getAuthority } from './authority';
 
 
-const getAuthorityList = () =>{
+const getAuthorityList = () => {
   const  ret = getAuthority();
-  return ret.authList; // eslint-disable-line
+  if ( ret !== null ) {
+    return ret.authList; // eslint-disable-line
+  }
 };
 let Authorized = RenderAuthorize(getAuthorityList()); // eslint-disable-line
 
