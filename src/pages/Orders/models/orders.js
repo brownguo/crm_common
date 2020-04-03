@@ -7,8 +7,7 @@ export default {
     data: {
       code:'',
       msg:'',
-      list: [],
-      pagination: {},
+      data: []
     },
   },
 
