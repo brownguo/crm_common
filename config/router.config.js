@@ -65,9 +65,9 @@ export default [
       },
       //测试权限
       {
+        path: '/result',
         name: 'result',
         icon: 'check-circle-o',
-        path: '/result',
         authority: ['result_success'],
         routes: [
           // result

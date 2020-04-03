@@ -293,7 +293,7 @@ class OrderList extends PureComponent {
   columns = [
     {
       title: '订单ID',
-      dataIndex: 'order_id',
+      dataIndex: 'id',
       render: text => <Link to={`/orders/detail/${text.replace(/\s+/gi, '-')}`}>{text}</Link>,
     },
     {
@@ -302,7 +302,7 @@ class OrderList extends PureComponent {
     },
     {
       title: '手机号',
-      dataIndex: 'mobile_number',
+      dataIndex: 'mobile_no',
     },
     {
       title: '金额',
@@ -314,7 +314,7 @@ class OrderList extends PureComponent {
     },
     {
       title: '状态',
-      dataIndex: 'order_status',
+      dataIndex: 'status',
       filters: [
         {
           text: status[0],
@@ -339,13 +339,13 @@ class OrderList extends PureComponent {
     },
     {
       title: '订单创建时间',
-      dataIndex: 'createdAt',
+      dataIndex: 'create_at',
       sorter: true,
       render: val => <span>{moment(val).format('YYYY-MM-DD HH:mm:ss')}</span>,
     },
     {
       title: '订单审核时间',
-      dataIndex: 'updatedAt',
+      dataIndex: 'order_verify_at',
       sorter: true,
       render: val => <span>{moment(val).format('YYYY-MM-DD HH:mm:ss')}</span>,
     },
@@ -680,7 +680,7 @@ class OrderList extends PureComponent {
             <StandardTable
               selectedRows={selectedRows}
               loading={loading}
-              data={data}
+              data={data.data}
               columns={this.columns}
               onSelectRow={this.handleSelectRows}
               onChange={this.handleStandardTableChange}
