@@ -13,15 +13,10 @@ export function getAuthority(str) {
   }
 
 
-  if (typeof authority === 'string') {  // 不是string，是json
+  if (typeof authority === 'string') {
     return [authority];
   }
-
-
-  console.log(...[authority.authList]);
-
-  return ['orders_all_list'];  // 在这里返回权限规则
-  // return authority
+  return authority;
 }
 export function setAuthority(authority) {
   const proAuthority = typeof authority === 'string' ? [authority] : authority;

@@ -8,7 +8,9 @@ import Exception403 from '@/pages/Exception/403';
 
 function AuthComponent({ children, location, routerData }) {
   const auth = getAuthority();
-  const isLogin = auth && auth[0] !== 'guest';
+  //如果token不为空，状态为登陆
+  const isLogin = auth['token']['access_token'] && auth['token']['exp'] !== 'undefined';
+
   const getRouteAuthority = (path, routeData) => {
     let authorities;
     routeData.forEach(route => {
