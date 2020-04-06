@@ -66,7 +66,7 @@ class UserLayout extends Component {
                   <span className={styles.title}>Played for me</span>
                 </Link>
               </div>
-              <div className={styles.desc}>勇者愤怒，抽刃向更强者；怯者愤怒，却抽刃向更弱者。</div>
+              <div className={styles.desc}>Hello World！</div>
             </div>
             {children}
           </div>
