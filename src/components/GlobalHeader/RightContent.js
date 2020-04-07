@@ -181,7 +181,7 @@ export default class GlobalHeaderRight extends PureComponent {
                 src={currentUser.avatar}
                 alt="avatar"
               />
-              <span className={styles.name}>{currentUser.name}</span>
+              <span className={styles.name}>这里是用户名{currentUser.name}</span>
             </span>
           </HeaderDropdown>
         ) : (
