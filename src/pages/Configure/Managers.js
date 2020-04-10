@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Card, Table } from 'antd';
+import { Card, Table, Alert, Divider, Menu, Dropdown, Icon, Button } from 'antd';
 import PageHeaderWrapper from '@/components/PageHeaderWrapper';
 import { connect } from 'dva';
 
@@ -11,7 +11,7 @@ import { connect } from 'dva';
 class Managers extends PureComponent {
   columns = [
     {
-      title: '订单ID',
+      title: '用户ID',
       dataIndex: 'id',
       render: text => <a href="#">{text}</a>,
     },
@@ -21,7 +21,7 @@ class Managers extends PureComponent {
       dataIndex: 'name',
     },
     {
-      title: '手机号',
+      title: '性别',
       dataIndex: 'mobile_no',
     },
     {
@@ -29,16 +29,29 @@ class Managers extends PureComponent {
       dataIndex: 'callNo',
     },
     {
-      title: '手机号',
+      title: '邮箱',
       dataIndex: 'status',
     },
     {
-      title: '手机号',
+      title: '注册时间',
       dataIndex: 'create_at',
     },
     {
-      title: '手机号',
-      dataIndex: 'order_verify_at',
+      title: '操作',
+      render: (e, record) => (
+        <div>
+          <Button type="primary" size="small">
+            编辑
+          </Button>
+          <Divider type="vertical" />
+          <Dropdown overlay={() => this.menu(record)}>
+            <Button type="primary" ghost size="small">
+              更多
+              <Icon type="down" />
+            </Button>
+          </Dropdown>
+        </div>
+      ),
     },
   ];
 
@@ -48,6 +61,26 @@ class Managers extends PureComponent {
       type: 'configure/fetch',
     });
   }
+
+  menu = record => (
+    <Menu
+      onClick={key => {
+        console.log(key, record);
+      }}
+    >
+      <Menu.Item key="1">
+        <a href="#">删 除</a>
+      </Menu.Item>
+
+      <Menu.Item key="2">
+        <a href="#">分配角色</a>
+      </Menu.Item>
+
+      <Menu.Item key="3">
+        <a href="#">分配权限</a>
+      </Menu.Item>
+    </Menu>
+  );
 
   render() {
     const {
@@ -62,6 +95,17 @@ class Managers extends PureComponent {
     return (
       <PageHeaderWrapper title="管理员列表">
         <Card bordered={false}>
+          <Alert
+            message={
+              <span>
+                系统检索出总数据 <a href="#">{paginationParams.pageSize}</a> 条
+              </span>
+            }
+            type="info"
+            showIcon
+            closeText="X"
+            style={{ marginBottom: '1%' }}
+          />
           <Table
             bordered
             dataSource={list}
