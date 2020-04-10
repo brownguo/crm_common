@@ -63,26 +63,26 @@ export default [
           },
         ],
       },
-      //测试权限
+      //系统设置
       {
-        path: '/result',
-        name: 'result',
-        icon: 'check-circle-o',
-        authority: ['result_success'],
+        path: '/configure',
+        icon: 'bars',
+        name: 'configure',
+        authority: ['orders_all_list'],
         routes: [
-          // result
           {
-            path: '/result/success',
-            name: 'success',
-            component: './Result/Success',
-            authority: ['result_success'],
-
+            icon: 'rocket',
+            path: '/configure/auth',
+            name: 'auth',
+            component: './Orders/OrderList',
+            authority: ['orders_all_list'],
           },
           {
-            path: '/result/fail',
-            name: 'fail',
-            component: './Result/Error',
-            authority: ['result_error'],
+            icon: 'rocket',
+            path: '/configure/managers',
+            name: 'managers',
+            component: './Configure/Managers',
+            authority: ['orders_all_list'],
           },
         ],
       },

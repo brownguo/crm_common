@@ -42,8 +42,12 @@ export default {
   'menu.editor.flow': '流程编辑器',
   'menu.editor.mind': '脑图编辑器',
   'menu.editor.koni': '拓扑编辑器',
+
   'menu.orders':'订单管理',
   'menu.orders.all-list':'订单列表',
-  'menu.demo':'测试用例',
-  'menu.demo.all-list':'测试ITEM'
+
+  'menu.configure':'系统设置',
+  'menu.configure.auth':'权限管理',
+  'menu.configure.managers':'管理员列表',
+  'menu.configure.usergroup':'用户组管理',
 };
