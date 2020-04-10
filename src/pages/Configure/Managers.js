@@ -280,7 +280,7 @@ class UpdateForm extends PureComponent {
   loading: loading.models.configure,
 }))
 @Form.create()
-class OrderList extends PureComponent {
+class Managers extends PureComponent {
   state = {
     modalVisible: false,
     updateModalVisible: false,
@@ -664,7 +664,7 @@ class OrderList extends PureComponent {
             <div className={styles.tableListForm}>{this.renderForm()}</div>
             <div className={styles.tableListOperator}>
               <Button icon="plus" type="primary" onClick={() => this.handleModalVisible(true)}>
-                下单
+                新建管理员
               </Button>
               {selectedRows.length > 0 && (
                 <span>
@@ -700,4 +700,4 @@ class OrderList extends PureComponent {
   }
 }
 
-export default OrderList;
+export default Managers;

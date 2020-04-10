@@ -66,19 +66,19 @@ export default [
       //系统设置
       {
         path: '/configure',
-        icon: 'bars',
+        icon: 'setting',
         name: 'configure',
         authority: ['orders_all_list'],
         routes: [
           {
-            icon: 'rocket',
+            icon: 'lock',
             path: '/configure/auth',
             name: 'auth',
             component: './Orders/OrderList',
             authority: ['orders_all_list'],
           },
           {
-            icon: 'rocket',
+            icon: 'user',
             path: '/configure/managers',
             name: 'managers',
             component: './Configure/Managers',
