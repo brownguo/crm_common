@@ -18,10 +18,10 @@ export function getAuthority(str) {
   return authority;
 }
 export function setAuthority(info) {
+  // 退出登录
   if (info !== 'undefined') {
     localStorage.setItem('crm-admin-authority-key', JSON.stringify(info));
   } else {
-    console.log('removeItem');
     localStorage.removeItem('crm-admin-authority-key');
   }
 }
