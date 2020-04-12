@@ -17,7 +17,11 @@ export function getAuthority(str) {
   }
   return authority;
 }
-export function setAuthority(authority) {
-  const proAuthority = typeof authority === 'string' ? [authority] : authority;
-  return localStorage.setItem('crm-admin-authority-key', JSON.stringify(proAuthority));
+export function setAuthority(info) {
+  if (info !== 'undefined') {
+    localStorage.setItem('crm-admin-authority-key', JSON.stringify(info));
+  } else {
+    console.log('removeItem');
+    localStorage.removeItem('crm-admin-authority-key');
+  }
 }
