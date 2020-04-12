@@ -99,9 +99,9 @@ export default class GlobalHeaderRight extends PureComponent {
 
     const userRes = localStorage.getItem('crm-admin-authority-key');
 
-    const userInfo = userRes ? JSON.parse(userRes) : '';
+    const userInfo = userRes !== null ? JSON.parse(userRes).userInfo : '';
 
-    const { nickname } = userInfo.userInfo;
+    const { nickname } = userInfo;
 
     if (theme === 'dark') {
       className = `${styles.right}  ${styles.dark}`;
