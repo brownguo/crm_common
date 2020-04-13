@@ -109,7 +109,6 @@ class Managers extends PureComponent {
             dataSource={list}
             columns={this.columns}
             rowKey="id"
-            size="small"
             loading={loading}
             pagination={pagination}
           />
