@@ -95,13 +95,13 @@ class Managers extends PureComponent {
     return (
       <PageHeaderWrapper title="管理员列表">
         <Card bordered={false}>
-          <Tabs defaultActiveKey="2">
+          <Tabs defaultActiveKey="1">
             <TabPane tab={<span><Icon type="smile-o" />用户列表</span>} key="1">
               <Alert
                 message={
                   <span>
-                系统检索出总数据 <a href="#">{pagination.pageSize}</a> 条
-              </span>
+                    系统检索出总数据 <a href="#">{pagination.pageSize}</a> 条
+                  </span>
                 }
                 type="info"
                 showIcon
