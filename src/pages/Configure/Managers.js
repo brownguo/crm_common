@@ -1,8 +1,9 @@
 import React, { PureComponent } from 'react';
-import { Card, Table, Alert, Divider, Menu, Dropdown, Icon, Button } from 'antd';
+import { Card, Table, Alert, Divider, Menu, Dropdown, Icon, Button,Tabs } from 'antd';
 import PageHeaderWrapper from '@/components/PageHeaderWrapper';
 import { connect } from 'dva';
 
+const TabPane = Tabs.TabPane;
 /* eslint react/no-multi-comp:0 */
 @connect(({ configure, loading }) => ({
   configure,
@@ -94,24 +95,31 @@ class Managers extends PureComponent {
     return (
       <PageHeaderWrapper title="管理员列表">
         <Card bordered={false}>
-          <Alert
-            message={
-              <span>
+          <Tabs defaultActiveKey="2">
+            <TabPane tab={<span><Icon type="smile-o" />用户列表</span>} key="1">
+              <Alert
+                message={
+                  <span>
                 系统检索出总数据 <a href="#">{pagination.pageSize}</a> 条
               </span>
-            }
-            type="info"
-            showIcon
-            closeText="X"
-            style={{ marginBottom: '1%' }}
-          />
-          <Table
-            dataSource={list}
-            columns={this.columns}
-            rowKey="id"
-            loading={loading}
-            pagination={pagination}
-          />
+                }
+                type="info"
+                showIcon
+                closeText="X"
+                style={{ marginBottom: '1%' }}
+              />
+              <Table
+                dataSource={list}
+                columns={this.columns}
+                rowKey="id"
+                loading={loading}
+                pagination={pagination}
+              />
+            </TabPane>
+            <TabPane tab={<span><Icon type="user-add" />新建用户</span>} key="2">
+              这里是新建用户的UI
+            </TabPane>
+          </Tabs>
         </Card>
       </PageHeaderWrapper>
     );
