@@ -3,11 +3,19 @@ import { queryRule, removeRule, addRule, updateRule } from '@/services/orders';
 export default {
   namespace: 'configure',
 
+  // 初始化字段，避免undefined的bug
   state: {
     data: {
-      code:'',
-      msg:'',
-      data: []
+      code: '',
+      msg: '',
+      data: {
+        list: [],
+        pagination: {
+          total: '',
+          pageSize: '',
+          current: '',
+        },
+      },
     },
   },
 

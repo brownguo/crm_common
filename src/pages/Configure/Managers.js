@@ -85,9 +85,11 @@ class Managers extends PureComponent {
   render() {
     const {
       loading,
-      configure: { data },
+      configure: {
+        data: { data },
+      },
     } = this.props;
-    const { list, pagination } = data.data;
+    const { list = [], pagination } = data;
 
     return (
       <PageHeaderWrapper title="管理员列表">
@@ -95,7 +97,7 @@ class Managers extends PureComponent {
           <Alert
             message={
               <span>
-                系统检索出总数据 <a href="#">{pagination.total}</a> 条
+                系统检索出总数据 <a href="#">{pagination.pageSize}</a> 条
               </span>
             }
             type="info"
@@ -104,13 +106,12 @@ class Managers extends PureComponent {
             style={{ marginBottom: '1%' }}
           />
           <Table
-            bordered
             dataSource={list}
             columns={this.columns}
             rowKey="id"
             size="small"
             loading={loading}
-            pagination={pagination.total}
+            pagination={pagination}
           />
         </Card>
       </PageHeaderWrapper>
