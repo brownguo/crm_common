@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import { Card, Table, Alert, Divider, Menu, Dropdown, Icon, Button,Tabs } from 'antd';
 import PageHeaderWrapper from '@/components/PageHeaderWrapper';
 import { connect } from 'dva';
+import CreateUser from './CreateUser'
 
 const TabPane = Tabs.TabPane;
 /* eslint react/no-multi-comp:0 */
@@ -117,7 +118,7 @@ class Managers extends PureComponent {
               />
             </TabPane>
             <TabPane tab={<span><Icon type="user-add" />新建用户</span>} key="2">
-              这里是新建用户的UI
+              <CreateUser />
             </TabPane>
           </Tabs>
         </Card>
