@@ -105,9 +105,9 @@ class UserList extends PureComponent {
               系统检索出总数据 <a href="#">{pagination.pageSize}</a>条
             </span>
           }
-          type="info"
+          type="success"
           showIcon
-          closeText="X"
+          closeText={false}
           style={{ marginBottom: '1%' }}
         />
         <Table
