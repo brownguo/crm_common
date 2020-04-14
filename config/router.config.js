@@ -117,7 +117,7 @@ export default [
           {
             path: '/orders/detail/:id',
             hideInMenu: true,
-            component: './Orders/BasicProfile',
+            component: './Profile/AdvancedProfile',
             authority: ['orders_detail_by_id'],
           },
         ],
