@@ -1,4 +1,4 @@
-import { queryRule, removeRule, addRule, updateRule } from '@/services/orders';
+import { queryRule, removeRule, addRule, updateRule } from '@/services/configure';
 
 export default {
   namespace: 'configure',

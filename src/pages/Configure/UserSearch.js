@@ -1,28 +1,21 @@
 import React, { PureComponent } from 'react';
-import { Button, Col, DatePicker, Form, Icon, Input, InputNumber, Row, Select } from 'antd';
+import { Button, Col, Form, Input, Row } from 'antd';
 import styles from '../Orders/OrderList.less';
 
 const FormItem = Form.Item;
-const { Option } = Select;
 
 @Form.create()
-class UserSearch extends PureComponent{
+class UserSearch extends PureComponent {
+  state = {
+    search_loading: false,
+  };
 
-  handleSearch = e => {
-    e.preventDefault();
-
-    const { dispatch, form } = this.props;
-
-    form.validateFields((err, fieldsValue) => {
-      if (err) return;
-
-      const values = {
-        ...fieldsValue,
-        updatedAt: fieldsValue.updatedAt && fieldsValue.updatedAt.valueOf(),
-      };
-
-      console.log(values);
-    });
+  enterLoading = e => {
+    console.log(e);
+    this.setState({ search_loading: true });
+    setTimeout(() => {
+      this.setState({ search_loading: false });
+    }, 2000);
   };
 
   renderSimpleForm() {
@@ -30,7 +23,7 @@ class UserSearch extends PureComponent{
       form: { getFieldDecorator },
     } = this.props;
     return (
-      <Form onSubmit={this.handleSearch} layout="inline">
+      <Form layout="inline">
         <Row gutter={{ md: 8, lg: 24, xl: 48 }}>
           <Col md={6} sm={24}>
             <FormItem label="用户ID">
@@ -49,7 +42,11 @@ class UserSearch extends PureComponent{
           </Col>
           <Col md={6} sm={24}>
             <span className={styles.submitButtons}>
-              <Button type="primary" htmlType="submit">
+              <Button
+                type="primary"
+                loading={this.state.search_loading}
+                onClick={this.enterLoading}
+              >
                 查询
               </Button>
               <Button style={{ marginLeft: 8 }} onClick={this.handleFormReset}>
@@ -63,9 +60,7 @@ class UserSearch extends PureComponent{
   }
 
   render() {
-    return(
-      <div className={styles.tableListForm}>{this.renderSimpleForm()}</div>
-    )
+    return <div className={styles.tableListForm}>{this.renderSimpleForm()}</div>;
   }
 }
 export default UserSearch;

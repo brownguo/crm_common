@@ -1,16 +1,17 @@
 import React, { PureComponent } from 'react';
-import {Table, Alert, Divider, Menu, Dropdown, Icon, Button,Tabs } from 'antd';
+import { Table, Alert, Divider, Menu, Dropdown, Icon, Button, Badge } from 'antd';
 import { connect } from 'dva';
 
 import UserSearch from './UserSearch';
+
+const genderMap = ['', '男', '女', '中性'];
 
 /* eslint react/no-multi-comp:0 */
 @connect(({ configure, loading }) => ({
   configure,
   loading: loading.models.configure,
 }))
-
-class UserList extends PureComponent{
+class UserList extends PureComponent {
   columns = [
     {
       title: '用户ID',
@@ -20,19 +21,22 @@ class UserList extends PureComponent{
     {
       title: '姓名',
       className: 'column-money',
-      dataIndex: 'name',
+      dataIndex: 'nickname',
     },
     {
       title: '性别',
-      dataIndex: 'mobile_no',
+      dataIndex: 'gender',
+      render(val) {
+        return <Badge status={genderMap[val]} text={genderMap[val]} />;
+      },
     },
     {
       title: '手机号',
-      dataIndex: 'callNo',
+      dataIndex: 'mobile_no',
     },
     {
       title: '邮箱',
-      dataIndex: 'status',
+      dataIndex: 'email',
     },
     {
       title: '注册时间',
@@ -92,11 +96,15 @@ class UserList extends PureComponent{
       },
     } = this.props;
     const { list = [], pagination } = data;
-    return(
-      <div style={{paddingRight: '1%', paddingLeft: '1%'}}>
+    return (
+      <div style={{ paddingRight: '1%', paddingLeft: '1%' }}>
         <UserSearch />
         <Alert
-          message={<span>系统检索出总数据 <a href="#">{pagination.pageSize}</a>条</span>}
+          message={
+            <span>
+              系统检索出总数据 <a href="#">{pagination.pageSize}</a>条
+            </span>
+          }
           type="info"
           showIcon
           closeText="X"
@@ -110,7 +118,7 @@ class UserList extends PureComponent{
           pagination={pagination}
         />
       </div>
-    )
+    );
   }
 }
 export default UserList;
