@@ -1,4 +1,4 @@
-import { queryRule, removeRule, addRule, updateRule } from '@/services/configure';
+import { queryUserList } from '@/services/configure';
 
 export default {
   namespace: 'configure',
@@ -21,7 +21,7 @@ export default {
 
   effects: {
     *fetch({ payload }, { call, put }) {
-      const response = yield call(queryRule, payload);
+      const response = yield call(queryUserList, payload);
       yield put({
         type: 'save',
         payload: response,
