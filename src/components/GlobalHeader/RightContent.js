@@ -95,7 +95,7 @@ export default class GlobalHeaderRight extends PureComponent {
 
     const userRes = localStorage.getItem('crm-admin-authority-key');
 
-    const userInfo = userRes !== null ? JSON.parse(userRes).userInfo : '';
+    const userInfo = (userRes !== null && userRes !== 'undefined') ? JSON.parse(userRes).userInfo : '';
 
     const { nickname } = userInfo;
 
